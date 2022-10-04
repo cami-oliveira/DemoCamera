@@ -11,15 +11,24 @@ class ViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var newPictureButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imageView.backgroundColor = .secondarySystemBackground
         
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 7
+        button.layer.borderWidth = 2
         button.setTitle("Take Picture", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        
+        newPictureButton.backgroundColor = .systemBlue
+        newPictureButton.layer.cornerRadius = 7
+        newPictureButton.layer.borderWidth = 2
+        newPictureButton.setTitle("Choose a Picture", for: .normal)
+        newPictureButton.setTitleColor(.white, for: .normal)
     }
     
     @IBAction func didTapButton() {
@@ -32,6 +41,17 @@ class ViewController: UIViewController {
         
         
     }
+    
+    
+    @IBAction func tapNewPicButton(_ sender: Any) {
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
 
 
 }
