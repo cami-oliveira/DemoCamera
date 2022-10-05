@@ -33,27 +33,23 @@ class ViewController: UIViewController {
     
     @IBAction func didTapButton() {
         
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
-        
-        
+        openPicker(type: .camera)
     }
     
     
     @IBAction func tapNewPicButton(_ sender: Any) {
         
+        openPicker(type: .photoLibrary)
+    }
+    
+    func openPicker(type: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary
+        picker.sourceType = type
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
     }
     
-
-
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
